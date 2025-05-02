@@ -1,0 +1,39 @@
+// Use the std io prelude
+// Other preludes available here: https://doc.rust-lang.org/std/prelude/index.html
+
+use std::io;
+
+
+fn main() {
+
+    // Exclamation mark denotes a macro
+    println!("Guess the number");
+    println!("Please input guess");
+
+    // let denotes variable
+    // mut allows for variable to be changed, by default vars are const
+    // String::new() binds a new string instance. new() is a common type instance
+    // Analogous to a constructor?
+    let mut guess = String::new();
+
+
+    // io is the imported std::io
+    // seems similar to python imports where std::io::stdin would also be valud
+    // Call "read line" method on the stdin handle to get user input
+    // & is a reference &mut needed so the read line function can actually change the reference
+    // No specific indentation etc required, stdin().bongus().bingus(); perfectly acceptable syntax
+    // read_line returns a "result" enum, so we can append .expect so if the result is Err
+    // program will end and will display error message
+    // If expect not present there will be a compiler warning
+    io::stdin()
+        .read_line(&mut guess)
+        .expect("failed to read line");
+    
+
+    // Like in python the {} are placeholders for the variable
+    // when printing a variable it can sit inside the curled braces
+    // If doing an evaluation the braces should be empty and the evaluation done after a comma
+    // e.g println!("bingus: {}", bongus + 5);
+
+    println!("you guessed: {guess}");
+}
